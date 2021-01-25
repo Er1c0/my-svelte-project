@@ -33,13 +33,14 @@ function serve() {
 }
 
 export default {
+  publicPath: "/my-svelte-project/",
+  basepath: "/my-svelte-project/",
   input: "src/main.js",
   output: {
     sourcemap: true,
     format: "iife",
     name: "app",
-    file: "public/build/bundle.js",
-    publicPath: "/my-svelte-project/",
+    file: "docs/build/bundle.js",
   },
   plugins: [
     svelte({
@@ -50,7 +51,7 @@ export default {
     }),
     // we'll extract any component CSS out into
     // a separate file - better for performance
-    css({ output: "bundle.css" }),
+    css({ output: "docs/build/bundle.css" }),
 
     // If you have external dependencies installed from
     // npm, you'll most likely need these plugins. In
@@ -67,9 +68,9 @@ export default {
     // the bundle has been generated
     !production && serve(),
 
-    // Watch the `public` directory and refresh the
+    // Watch the `docs` directory and refresh the
     // browser on changes when not in production
-    !production && livereload("public"),
+    !production && livereload("docs"),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
